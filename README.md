@@ -35,13 +35,13 @@ npm start
 To export PDF you have to open in your browser (example):
 
 ```
-http://localhost:5000/api/v1/webshot?filename=export.pdf&url=#{websiteURL}
+http://localhost:5000/webshot?filename=export.pdf&url=#{websiteURL}
 ```
 
 Example to use in links:
 
 ```
-<a href="http://localhost:5000/api/v1/webshot?filename=export.pdf&url=#{websiteURL}" download>Export PDF</a>
+<a href="http://localhost:5000/webshot?filename=export.pdf&url=#{websiteURL}" download>Export PDF</a>
 ```
 
 
