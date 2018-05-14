@@ -1,8 +1,8 @@
 const Koa = require('koa');
-const loader = require('./loader');
 const logger = require('./logger');
 const convert = require('koa-convert');
 const ErrorSerializer = require('./serializers/error.serializer');
+const webshotRouter = require('./routes/webshot.router');
 
 const port = process.env.PORT || 5000;
 const koaBody = require('koa-body')({
@@ -33,10 +33,9 @@ app.use(async (ctx, next) => {
     }
     ctx.response.type = 'application/vnd.api+json';
   }
-
 });
 
-loader.loadRoutes(app);
+app.use(webshotRouter.routes());
 
 app.listen(port);
 logger.info('Server started in ', port);

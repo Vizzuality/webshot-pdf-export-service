@@ -1,17 +1,17 @@
 const Router = require('koa-router');
 const puppeteer = require('puppeteer');
-const logger = require('../../../logger');
 const send = require('koa-send');
 const tmp = require('tmp');
 const url = require('url');
 const rimraf = require('rimraf');
+const logger = require('../logger');
 
 const router = new Router({
   prefix: '/webshot',
 });
 
 const viewportDefaultOptions = { width: 1024, height: 768, isMobile: true };
-const gotoOptions = { waitUntil: 'networkidle' };
+const gotoOptions = { waitUntil: 'networkidle0' };
 
 const getDelayParam = (param) => {
   const n = parseInt(param, 10);
