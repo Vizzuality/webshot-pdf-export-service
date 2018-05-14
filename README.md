@@ -35,5 +35,25 @@ npm start
 To export PDF you have to open in your browser (example):
 
 ```
-http://localhost:5000/api/v1/webshot?filename=export.pdf&url=http://localhost:3000
+http://localhost:5000/api/v1/webshot?filename=export.pdf&url=#{websiteURL}
+```
+
+Example to use in links:
+
+```
+<a href="http://localhost:5000/api/v1/webshot?filename=export.pdf&url=#{websiteURL}" download>Export PDF</a>
+```
+
+
+### NGINX config
+
+```
+location /webshot {
+  passenger_enabled off; // Only for rails apps
+  proxy_set_header X-Real-IP $remote_addr;
+  proxy_set_header X-Forwarded-Proto $scheme;
+  proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+  proxy_set_header Host $http_host;
+  proxy_pass http://localhost:5000;
+}
 ```
