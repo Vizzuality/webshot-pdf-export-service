@@ -1,15 +1,16 @@
 const Koa = require('koa');
-const loader = require('loader');
+const loader = require('./loader');
+const logger = require('./logger');
 const convert = require('koa-convert');
-const ErrorSerializer = require('serializers/error.serializer');
+const ErrorSerializer = require('./serializers/error.serializer');
 
+const port = process.env.PORT || 5000;
 const koaBody = require('koa-body')({
   multipart: true,
   jsonLimit: '50mb',
   formLimit: '50mb',
   textLimit: '50mb'
 });
-
 const app = new Koa();
 
 app.use(convert(koaBody));
@@ -37,4 +38,5 @@ app.use(async (ctx, next) => {
 
 loader.loadRoutes(app);
 
-logger.info('Server started in ', process.env.PORT);
+app.listen(port);
+logger.info('Server started in ', port);

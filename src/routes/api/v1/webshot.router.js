@@ -1,6 +1,6 @@
 const Router = require('koa-router');
 const puppeteer = require('puppeteer');
-const logger = require('logger');
+const logger = require('../../../logger');
 const send = require('koa-send');
 const tmp = require('tmp');
 const url = require('url');
