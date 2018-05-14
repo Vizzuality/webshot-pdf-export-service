@@ -31,3 +31,9 @@ To start:
 ```
 npm start
 ```
+
+To export PDF you have to open in your browser (example):
+
+```
+http://localhost:5000/api/v1/webshot?filename=export.pdf&url=http://localhost:3000
+```
